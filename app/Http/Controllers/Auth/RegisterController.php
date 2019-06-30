@@ -27,14 +27,14 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct()//guestであることが条件
     {
         $this->middleware('guest');
     }
@@ -45,7 +45,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    protected function validator(array $data)//ユーザ登録の際のフォームデータのバリデーション
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
@@ -60,7 +60,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(array $data)//ユーザ新規作成のためのメソッド
     {
         return User::create([
             'name' => $data['name'],
