@@ -3,6 +3,7 @@
 @section('content')
 
     @if (Auth::check())
+    <!--ログイン中のユーザ名を表示-->
         {{ Auth::user()->name }}
     @else
         <div class="center jumbotron">
