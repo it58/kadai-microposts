@@ -5,6 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+
+//  public function showLoginForm()
+//     {
+//         return view('auth.login');
+//     }
+    
 class LoginController extends Controller
 {
     /*

@@ -13,6 +13,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        // usersという名のテーブルを作成
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
@@ -30,6 +31,7 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        // テーブルをドロップする
         Schema::dropIfExists('users');
     }
 }

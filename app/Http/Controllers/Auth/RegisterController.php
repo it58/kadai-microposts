@@ -21,12 +21,29 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
-
+    
+    //フォームに入力してsignupボタンを押すと実行される
+    // public function register(Request $request)
+    // {
+    //$request->all()はカラム全ての意味
+    //     $this->validator($request->all())->validate();
+    //     event(new Registered($user = $this->create($request->all())));
+    //     $this->guard()->login($user);
+    //     return $this->registered($request, $user)
+    //                     ?: redirect($this->redirectPath());
+    // }
+    //タイトルからsign up nowボタンを押すと実行される
+    // public function showRegistrationForm()
+    // {
+    //     return view('auth.register');
+    // }
+    
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
+    //  ユーザ登録が完了すると、ログイン状態になった上で、指定のリダイレクト先へ飛
     protected $redirectTo = '/';
 
     /**

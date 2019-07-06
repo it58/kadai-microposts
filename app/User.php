@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+// 複数形 microposts でメソッドを定義
 class User extends Authenticatable
 {
     use Notifiable;
@@ -26,4 +27,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    // User のインスタンスから、その User が持つ Microposts を
+    // $user->microposts()->get() もしくは $user->microposts 
+    // という簡単な記述で取得
+    
+    public function microposts(){
+        return $this->hasMany(Micropost::class);
+    }
 }
