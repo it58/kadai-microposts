@@ -91,4 +91,39 @@ class User extends Authenticatable
         // microposts テーブルの user_id カラムでの中の、配列にあるIDの投稿をリターンする
         return Micropost::whereIn('user_id', $follow_user_ids);
     }
+    
+    // お気に入りに追加しているmicropostを$user->favorites()で取得できるようにする
+    public function favorites(){
+        return $this->belongsToMany(Micropost::class, 'favorites', 'user_id', 'micropost_id')->withTimestamps();
+    }
+    
+    //お気に入りに追加する
+    public function add_favorite($micropostId){
+        // 既にお気に入り登録しているかの確認
+        if( $this->favoring($micropostId) ){
+            return false;
+        }else{
+            // お気に入りに登録されていなければ登録する
+            $this->favorites()->attach($micropostId);
+            return true;
+        }
+    }
+    // お気に入りを解除する
+    public function delete_favorite($micropostId){
+        // 既にお気に入り登録しているかの確認
+        if( $this->favoring($micropostId) ){
+             // お気に入りに登録されていれば解除する
+            $this->favorites()->detach($micropostId);
+            return true;
+        }else{
+           
+            return false;
+        }
+    }
+    // 投稿がお気に入りに追加済みならtrue、そうでなければfalseを返す
+    public function favoring($micropostId){
+        return $this->favorites()->where('microposts.id', $micropostId)->exists();
+    }
+    
+    
 }

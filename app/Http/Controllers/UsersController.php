@@ -32,6 +32,7 @@ class UsersController extends Controller
         
     }
     
+    // id番目のユーザーがフォローしているユーザー一覧を取得する
     public function followings($id){
         $user = User::find($id);
         $followings = $user->followings()->paginate(10);
@@ -46,6 +47,7 @@ class UsersController extends Controller
             return view('users.followings', $data);
     }
     
+    // id番目のユーザーをフォローしているユーザー一覧を取得する
     public function followers($id){
         $user = User::find($id);
         $followers = $user->followers()->paginate(10);
@@ -58,5 +60,20 @@ class UsersController extends Controller
             $data += $this->counts($user);
             
             return view('users.followers', $data);
+    }
+    
+    // お気に入りに追加しているmicropost一覧を表示する
+    public function favorites($id){
+        $user  = User::find($id);
+        $favorites = $user->favorites()->paginate(10);
+        
+        $data = [
+            'user' => $user,
+            'favorites' => $favorites,
+            ];
+            
+            $data += $this->counts($user);
+            
+            return view('users.favorites', $data);
     }
 }

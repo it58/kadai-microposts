@@ -18,6 +18,7 @@
                         <ul class="dropdown-menu dropdown-menu-right">
                             <!--Auth::id()とAuth::user()->idは同じ動き-->
                             <li class="dropdown-item">{!! link_to_route('users.show', 'My Profile',['id' => Auth::id()]) !!}</li>
+                            <li class="dropdown-item">{!! link_to_route('users.favorites', 'Favorites',['id' => Auth::id()]) !!}</li>
                             <li class="dropdown-divider"></li>
                             <li class="dropdown-item">{!! link_to_route('logout.get', 'Logout') !!}</li>
                         </ul>

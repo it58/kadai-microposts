@@ -1,5 +1,6 @@
 <ul class="nav nav-tabs nav-justified mb-3">
-    <li class="nav-item"><a href="{{ route('users.show',['id' =>$user->id]) }}" class="nav-link {{ Request::is('users/'.$user->id) ? 'active' : '' }}">TimeLine <span class="badge bagde-secondary">{{ $count_microposts }}</span></a></li>
-    <li class="nav-item"><a href="{{ route('users.followings',['id' =>$user->id]) }}" class="nav-link {{ Request::is('users/*/followings') ? 'active' : '' }}">followings <span class="badge bagde-secondary">{{ $count_followings }}</span></a></li>
-    <li class="nav-item"><a href="{{ route('users.followers',['id' =>$user->id]) }}" class="nav-link {{ Request::is('users/*/followers') ? 'active' : '' }}">followers <span class="badge bagde-secondary">{{ $count_followers }}</span></a></li>
+    <li class="nav-item"><a href="{{ route('users.show',['id' =>$user->id]) }}" class="nav-link {{ Request::is('users/'.$user->id) ? 'active' : '' }} px-0">TimeLine <span class="badge badge-secondary border">{{ $count_microposts }}</span></a></li>
+    <li class="nav-item"><a href="{{ route('users.followings',['id' =>$user->id]) }}" class="nav-link {{ Request::is('users/*/followings') ? 'active' : '' }} px-0">followings <span class="badge badge-secondary">{{ $count_followings }}</span></a></li>
+    <li class="nav-item"><a href="{{ route('users.followers',['id' =>$user->id]) }}" class="nav-link {{ Request::is('users/*/followers') ? 'active' : '' }} px-0">followers <span class="badge badge-secondary">{{ $count_followers }}</span></a></li>
+    <li class="nav-item"><a href="{{ route('users.favorites',['id' =>$user->id]) }}" class="nav-link {{ Request::is('users/*/favorites') ? 'active' : '' }} px-0">favorites <span class="badge badge-secondary">{{ $count_favorites }}</span></a></li>
 </ul>
